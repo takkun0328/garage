@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="家族のバイクと思い出を残す、前田家ガレージ。">
+  <title>前田家ガレージ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #08090b;
+      --panel: #111317;
+      --panel-light: #181b20;
+      --line: #292d34;
+      --text: #f5f5f2;
+      --muted: #9a9ea7;
+      --accent: #f04422;
+      --accent-glow: rgba(240, 68, 34, 0.28);
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 4%, rgba(240, 68, 34, 0.13), transparent 25rem),
+        linear-gradient(180deg, #0c0d10 0%, var(--bg) 38%);
+      font-family: system-ui, -apple-system, "Noto Sans JP", "Yu Gothic", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 100% 5px;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .hero {
+      display: grid;
+      min-height: 68vh;
+      place-items: center;
+      padding: 72px 0 56px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.55rem, 10vw, 5.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+      text-shadow: 0 0 34px rgba(255,255,255,.06);
+    }
+
+    .lead {
+      margin: 18px auto 0;
+      color: #c2c5ca;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+    }
+
+    .hero-line {
+      width: 54px;
+      height: 4px;
+      margin: 28px auto 0;
+      border: 0;
+      border-radius: 99px;
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    main { padding-bottom: 72px; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 5vw, 2.35rem);
+      letter-spacing: -0.035em;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .garage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .bike-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(145deg, var(--panel-light), var(--panel));
+      box-shadow: 0 16px 50px rgba(0,0,0,.25);
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .bike-card:hover {
+      transform: translateY(-4px);
+      border-color: #464b54;
+    }
+
+    .photo-frame {
+      position: relative;
+      display: grid;
+      min-height: 230px;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 49.5%, rgba(255,255,255,.04) 50%, transparent 50.5%),
+        repeating-linear-gradient(90deg, #101216 0, #101216 34px, #13161a 35px);
+      color: #6f747c;
+    }
+
+    .photo-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .photo-icon {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.75rem;
+      filter: grayscale(1);
+    }
+
+    .photo-placeholder span:last-child {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .card-body { padding: 23px; }
+
+    .owner {
+      margin: 0 0 4px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: clamp(1.45rem, 4vw, 1.85rem);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    .comment {
+      min-height: 3.4em;
+      margin: 16px 0 19px;
+      color: #d2d4d8;
+    }
+
+    .memo {
+      padding: 14px 15px;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      background: rgba(0,0,0,.22);
+    }
+
+    .memo-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+    }
+
+    .memo p {
+      margin: 0;
+      color: #bbbfc5;
+      font-size: 0.88rem;
+    }
+
+    .cheer {
+      margin-top: 72px;
+      padding: 46px 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #0e1013;
+      text-align: center;
+    }
+
+    .cheer p {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .cheer-button {
+      min-width: min(100%, 260px);
+      padding: 16px 28px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(135deg, #ff542f, #d72d13);
+      box-shadow: 0 10px 30px var(--accent-glow);
+      font: inherit;
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .cheer-button:hover { filter: brightness(1.1); }
+    .cheer-button:active { transform: scale(.96); }
+    .cheer-button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 4px;
+    }
+
+    .message {
+      display: grid;
+      min-height: 2.3em;
+      place-items: center;
+      margin: 22px 0 0 !important;
+      color: var(--text) !important;
+      font-size: clamp(1.05rem, 4vw, 1.35rem);
+      font-weight: 800;
+    }
+
+    .message.pop { animation: pop .42s ease; }
+
+    @keyframes pop {
+      0% { opacity: 0; transform: scale(.84) translateY(8px); }
+      70% { transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    footer {
+      padding: 42px 16px 46px;
+      border-top: 1px solid #1d2025;
+      color: #aaaeb5;
+      text-align: center;
+    }
+
+    footer p { margin: 0; }
+
+    .footer-mark {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: .22em;
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(calc(100% - 24px), var(--max-width)); }
+      .hero { min-height: 58vh; padding-top: 52px; }
+      .garage-grid { grid-template-columns: 1fr; gap: 16px; }
+      .photo-frame { min-height: 205px; }
+      .card-body { padding: 20px; }
+      .comment { min-height: 0; }
+      .cheer { margin-top: 52px; padding: 38px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="メインナビゲーション">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">MAEDA GARAGE</a>
+      <div class="nav-links">
+        <a class="active" href="index.html" aria-current="page">ガレージ</a>
+        <a href="gallery.html">思い出ギャラリー</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Maeda Family Garage</p>
+      <h1>前田家ガレージ</h1>
+      <p class="lead">家族のバイクと思い出を残す場所</p>
+      <hr class="hero-line">
+      <a class="gallery-cta" href="gallery.html">思い出ギャラリーを見る <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="garage-title">
+      <div class="section-heading">
+        <h2 id="garage-title">Garage Members</h2>
+        <span class="count">5 BIKES</span>
+      </div>
+
+      <div class="garage-grid">
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img src="images/zrx400-blurred.png" alt="長男のZRX400" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / RYUSEI</p>
+            <h3>KAWASAKI ZRX400</h3>
+            <p class="comment">受け継ぐカワサキ魂。今日も最高の相棒。</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img src="images/cb400sf.jpg" alt="次男のCB400SF NC39" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / KAZUMA</p>
+            <h3>HONDA CB400SF</h3>
+            <p class="comment">VTECの音と一緒に、どこまでも。</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img src="images/ape50.jpg" alt="三男のHONDA APE" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / RYOUYA</p>
+            <h3>HONDA APE</h3>
+            <p class="comment">小さな車体に、大きなワクワク。</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img src="images/ns250r.jpg" alt="家族の思い出バイク HONDA NS250R" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / 家族の思い出バイク</p>
+            <h3>HONDA NS250R</h3>
+            <p class="comment">借り物だけど、大切な物語が詰まった一台</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>カウル修理、スクリーン、旧車ならではの味わい</p></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img src="images/zrx1200daeg.jpg" alt="たけさんのZRX1200 DAEG" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / TAKENOBU</p>
+            <h3>KAWASAKI ZRX1200 DAEG</h3>
+            <p class="comment">家族ガレージの頼れるリーダー。</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cheer" aria-labelledby="cheer-title">
+      <h2 id="cheer-title">今日も安全運転で。</h2>
+      <p>出発前に、みんなで気合いを入れよう。</p>
+      <button class="cheer-button" id="cheerButton" type="button">しゃーー！！🔥</button>
+      <p class="message" id="cheerMessage" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-mark">MAEDA FAMILY GARAGE</span>
+    <p>家族との物語は、これからも続く。</p>
+  </footer>
+
+  <script>
+    const messages = [
+      "今日も最高の一日にしよう！🔥",
+      "安全第一、楽しさ全開！",
+      "前田家、今日も絶好調！",
+      "エンジンも気持ちも温まってるぞ！",
+      "いい道、いい仲間、いい家族！",
+      "無事に帰るまでがツーリング！",
+      "その一走りが、また思い出になる。"
+    ];
+
+    const button = document.getElementById("cheerButton");
+    const message = document.getElementById("cheerMessage");
+    let lastIndex = -1;
+
+    button.addEventListener("click", () => {
+      let index;
+      do {
+        index = Math.floor(Math.random() * messages.length);
+      } while (messages.length > 1 && index === lastIndex);
+
+      lastIndex = index;
+      message.textContent = messages[index];
+      message.classList.remove("pop");
+      void message.offsetWidth;
+      message.classList.add("pop");
+
+      if (navigator.vibrate) navigator.vibrate([40, 30, 70]);
+    });
+  </script>
+</body>
+</html>
