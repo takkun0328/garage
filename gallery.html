@@ -24,9 +24,13 @@
       <p class="gallery-kicker">Maeda Family Memories</p>
       <h1>思い出ギャラリー</h1>
       <p class="gallery-lead">走った道、立ち寄った場所、家族と笑った日。大切な瞬間をここに残していきます。</p>
+      <nav class="gallery-categories" aria-label="ギャラリーのカテゴリ">
+        <a class="gallery-cta" href="#photos">写真の思い出</a>
+        <a class="gallery-cta" href="#extra">番外編 · 家族の動画</a>
+      </nav>
     </header>
 
-    <section class="memory-grid" aria-label="思い出の写真">
+    <section id="photos" class="memory-grid" aria-label="思い出の写真">
       <!-- 写真を追加するとき：memory-photo内へimgタグを追加し、タイトル・日付・コメントを変更します -->
       <!-- 例：<img src="images/gallery/memory-07.jpg" alt="写真の説明" loading="lazy" decoding="async"> -->
       <article class="memory-card">
@@ -116,7 +120,6 @@
           <p>深い緑の道でひと休み。事故を乗り越え、また走り出す日のために現在修理中。</p>
         </div>
       </article>
-
       <article class="memory-card">
         <div class="memory-photo">
           <img src="images/gallery/memory-09.jpg" alt="アーケードに停まるHONDA NS250R" loading="lazy" decoding="async">
@@ -125,6 +128,22 @@
           <time class="memory-date" datetime="2026-07-18">2026.7.18</time>
           <h2>完全復活のNS250R</h2>
           <p>静かな商店街に佇む、ロスマンズカラーが映える一枚。</p>
+        </div>
+      </article>
+    </section>
+    <section id="extra" class="gallery-extra" aria-labelledby="extra-title">
+      <p class="gallery-kicker">Family Stories</p>
+      <h2 id="extra-title">番外編</h2>
+      <p class="gallery-lead">写真だけでは伝えきれない、家族の思い出を動画でも。</p>
+      <!-- 動画を追加するときは、このarticleをコピーして動画ID・タイトル・コメントを変更します。 -->
+      <article class="memory-card video-card">
+        <div class="memory-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/6JlJBskXjK0" title="番外編：家族のYouTube動画" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="memory-body">
+          <h3>家族の思い出ムービー</h3>
+          <p>家族との大切な時間を、ここにも残していきます。</p>
+          <p><a href="https://www.youtube.com/watch?v=6JlJBskXjK0" target="_blank" rel="noopener noreferrer">YouTubeで見る ↗</a></p>
         </div>
       </article>
     </section>

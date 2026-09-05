@@ -224,6 +224,19 @@
   text-align: center;
 }
 
+.gallery-categories { display: flex; flex-wrap: wrap; gap: 10px; }
+.gallery-categories .gallery-cta { margin-top: 24px; }
+#photos, .gallery-extra { scroll-margin-top: 90px; }
+.gallery-extra { padding: 0 0 64px; }
+.gallery-extra > h2 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.5rem); }
+.video-card { max-width: 800px; margin-top: 24px; }
+.video-card:hover { transform: none; }
+.memory-video { aspect-ratio: 16 / 9; background: #000; }
+.memory-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-card h3 { margin: 0; font-size: 1.24rem; line-height: 1.35; }
+.video-card a { color: var(--shared-text); text-underline-offset: 4px; }
+.gallery-categories a:focus-visible, .video-card a:focus-visible { outline: 2px solid var(--shared-accent); outline-offset: 4px; }
+
 .gallery-footer a {
   color: var(--shared-text);
   font-weight: 800;
