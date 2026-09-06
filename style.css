@@ -225,6 +225,14 @@
 }
 
 .gallery-categories { display: flex; flex-wrap: wrap; gap: 10px; }
+.family-story { margin: 24px 0; padding: 20px; border: 1px solid var(--shared-line); border-radius: 18px; background: var(--shared-panel); }
+.family-story summary { cursor: pointer; font-weight: 700; }
+.family-story p { color: #b9bdc4; }
+.memory-grid { align-items: start; }
+.memory-grid .memory-photo img { object-fit: contain; }
+.memory-year { grid-column: 1 / -1; margin: 24px 0 0; color: var(--shared-accent); font-size: 1.7rem; }
+.memory-grid .memory-body a { color: var(--shared-text); text-underline-offset: 4px; }
+.memory-video.is-short { aspect-ratio: 9 / 16; max-width: 320px; margin-inline: auto; }
 .gallery-categories .gallery-cta { margin-top: 24px; }
 #photos, .gallery-extra { scroll-margin-top: 90px; }
 .gallery-extra { padding: 0 0 64px; }

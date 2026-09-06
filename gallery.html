@@ -25,12 +25,23 @@
       <h1>思い出ギャラリー</h1>
       <p class="gallery-lead">走った道、立ち寄った場所、家族と笑った日。大切な瞬間をここに残していきます。</p>
       <nav class="gallery-categories" aria-label="ギャラリーのカテゴリ">
-        <a class="gallery-cta" href="#photos">写真の思い出</a>
+        <a class="gallery-cta" href="#photos">バイクとの思い出</a>
         <a class="gallery-cta" href="#extra">番外編 · 家族の動画</a>
       </nav>
     </header>
 
-    <section id="photos" class="memory-grid" aria-label="思い出の写真">
+    <h2>バイクとの思い出</h2>
+    <p class="gallery-lead">一緒に直した日も、走った日も。古い日付から振り返る、家族とバイクの物語。</p>
+    <details class="family-story">
+      <summary>家族でつないできた、3台の物語</summary>
+      <h3>APE50 — 家族で直した、RYOUYAの相棒</h3>
+      <p>RYUSEIの知り合いから譲ってもらったAPE50。3年間放置され、ボロボロだった一台を家族みんなで修理しました。完成した今、RYOUYAは毎日楽しく乗っています。</p>
+      <h3>CB400SF — 何度でも、また走るために</h3>
+      <p>知り合いから譲ってもらったKAZUMAのCB400SFも、最初はボロボロ。家族でマフラーを磨き、6速のギア抜けはバイク屋さんでエンジンを大きく分解して修理してもらいました。いざツーリングへ出かけると、旅先で転倒。エンジンカバーが割れて自走不能になり、再び修理へ。その一つひとつが、家族の忘れられない思い出です。</p>
+      <h3>ZRX400とNS250R — 復活を待つ間にも、物語は続く</h3>
+      <p>単独事故に遭ったZRX400は、知り合いの方にお願いして修理中。その方からNS250Rを借りて、RYUSEIはバイクの時間を楽しんでいます。ZRX400もそろそろ復活の予定。また一緒に走る日が楽しみです。</p>
+    </details>
+    <section id="photos" class="memory-grid" aria-label="バイクとの思い出・古い日付順">
       <!-- 写真を追加するとき：memory-photo内へimgタグを追加し、タイトル・日付・コメントを変更します -->
       <!-- 例：<img src="images/gallery/memory-07.jpg" alt="写真の説明" loading="lazy" decoding="async"> -->
       <article class="memory-card">
@@ -153,5 +164,6 @@
     <p><a href="index.html">← 前田家ガレージへ戻る</a></p>
     <p>家族との物語は、これからも続く。</p>
   </footer>
+  <script src="gallery.js" defer></script>
 </body>
 </html>
