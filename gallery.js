@@ -32,6 +32,7 @@
   const videos = [
     ['_lndrJSbTvE','2026-05-30T10:39:50','APE50を修理するRYOUYA','家族で一緒に直してきたAPE50。完成に向けて、RYOUYAも手を動かす。'],
     ['s1MViLMHtvk','2026-04-18T13:19:05','APE50とRYOUYA','譲り受けた一台が、RYOUYAの相棒になっていく。'],
+    ['P70j2kaMYWg','2026-05-02T13:21:00','APEの修理をするRYUSEIとKAZUMAとRYOUYA','家族で力を合わせて直してきたAPE。RYUSEI、KAZUMA、RYOUYAが一緒に手を動かす、完成へつながる大切な時間。'],
     ['9Vb8VY_5od8','2026-05-17T10:06:00','APEのタイヤ交換をするKAZUMAとRYOUYA','家族で手をかけてきたAPE。KAZUMAとRYOUYAが一緒にタイヤ交換をする、ガレージでの大切な時間。'],
     ['VE4bEwhigbo','2023-11-16T15:38:00','ZRX400で駆け抜けるRYUSEI','緑の相棒と走った道を、動画でも振り返る。'],
     ['pwmK2LKeEAI','2026-05-03T10:46:00','YAMANOGUCHIさんのZ1の迫力あるエンジンサウンド','RYUSEIのZRX400を修理してくれているYAMANOGUCHIさんのKawasaki Z1フォア。RYUSEIと修理の具合を見に訪れた日に、最近購入された一台の迫力あるサウンドを残した動画。'],
@@ -42,6 +43,7 @@
     ['9qWUupa--Fs','2026-01-01T17:10:15','APE50とKAZUMAとRYOUYA','年の始まりにも、バイクを囲む家族の時間。'],
     ['gPZlNhZN6aI','2025-10-05T16:50:47','NS250RとRYUSEI','ZRX400の復活を待ちながら、借りたNS250Rで思い出を重ねる。'],
     ['c7NCP_uGF1I','2026-08-16T09:31:00','ZRX1200ダエグMAVERICKマフラー音','DAEGの音も、ガレージの思い出に。',true],
+    ['ymvXhLj4mUg','2026-09-09T16:40:00','ZRX400復活に向けてエンジン始動','YAMANOGUCHIさんから届いた実況動画。修理中のZRX400が、復活へ向けて再びエンジンに命を吹き込まれる瞬間。'],
     ['Zxtvb7ymNLc','2024-06-29T11:54:00','CB400SFとKAZUMA','家族で手をかけてきたCB400SF。写真と一緒に、この日の姿を残して。']
   ];
   const grid = document.getElementById('photos');
