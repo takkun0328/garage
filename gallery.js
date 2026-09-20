@@ -32,6 +32,7 @@
   const videos = [
     ['_lndrJSbTvE','2026-05-30T10:39:50','APE50を修理するRYOUYA','家族で一緒に直してきたAPE50。完成に向けて、RYOUYAも手を動かす。'],
     ['s1MViLMHtvk','2026-04-18T13:19:05','APE50とRYOUYA','譲り受けた一台が、RYOUYAの相棒になっていく。'],
+    ['9Vb8VY_5od8','2026-05-17T10:06:00','APEのタイヤ交換をするKAZUMAとRYOUYA','家族で手をかけてきたAPE。KAZUMAとRYOUYAが一緒にタイヤ交換をする、ガレージでの大切な時間。'],
     ['VE4bEwhigbo','2023-11-16T15:38:00','ZRX400で駆け抜けるRYUSEI','緑の相棒と走った道を、動画でも振り返る。'],
     ['pwmK2LKeEAI','2026-05-03T10:46:00','YAMANOGUCHIさんのZ1の迫力あるエンジンサウンド','RYUSEIのZRX400を修理してくれているYAMANOGUCHIさんのKawasaki Z1フォア。RYUSEIと修理の具合を見に訪れた日に、最近購入された一台の迫力あるサウンドを残した動画。'],
     ['gAyFeyx4Qh4','2025-06-04T13:14:00','ZRX400で駆け抜けるRYUSEI','RYUSEIとZRX400が走り抜ける、記憶に残るひととき。'],
