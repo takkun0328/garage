@@ -70,6 +70,8 @@
       z-index: -2;
     }
 
+    .hero-slides { background: #050608; }
+
     .hero-slide {
       position: absolute;
       inset: 0;
@@ -96,6 +98,15 @@
     .hero-slide:nth-child(7) { object-position: center 63%; }
     .hero-slide:nth-child(8) { object-position: center 50%; }
     .hero-slide:nth-child(9) { object-position: center 45%; }
+
+    /* PCは写真を切り取らず、元の構図をそのまま見せる */
+    @media (min-width: 681px) {
+      .hero-slide,
+      .hero-slide.is-active {
+        object-fit: contain;
+        transform: none;
+      }
+    }
 
     .hero-shade {
       z-index: -1;
@@ -691,7 +702,6 @@
   <script>
     const heroSlides = [...document.querySelectorAll(".hero-slide")];
     const heroDots = [...document.querySelectorAll(".hero-dot")];
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let activeSlide = 0;
     let slideshowTimer;
 
@@ -709,7 +719,7 @@
     };
 
     const startSlideshow = () => {
-      if (reduceMotion || heroSlides.length < 2) return;
+      if (heroSlides.length < 2) return;
       clearInterval(slideshowTimer);
       slideshowTimer = setInterval(() => showSlide(activeSlide + 1), 4500);
     };
