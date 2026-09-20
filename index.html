@@ -61,7 +61,10 @@
     }
 
     .eyebrow {
-      margin: 0 0 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
       color: var(--accent);
       font-size: 0.75rem;
       font-weight: 800;
@@ -69,12 +72,50 @@
       text-transform: uppercase;
     }
 
-    h1 {
+    .eyebrow::before,
+    .eyebrow::after {
+      width: 28px;
+      height: 1px;
+      content: "";
+      background: currentColor;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .garage-logo {
       margin: 0;
-      font-size: clamp(2.55rem, 10vw, 5.8rem);
-      line-height: 1.08;
-      letter-spacing: -0.055em;
-      text-shadow: 0 0 34px rgba(255,255,255,.06);
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(3.7rem, 15vw, 9rem);
+      font-style: italic;
+      font-weight: 900;
+      line-height: .76;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+      transform: skewX(-5deg);
+    }
+
+    .garage-logo span { display: block; }
+
+    .logo-maeda {
+      color: transparent;
+      -webkit-text-stroke: clamp(1px, .25vw, 3px) #f5f5f2;
+      text-shadow: 0 0 34px rgba(255,255,255,.1);
+    }
+
+    .logo-garage {
+      margin-top: 8px;
+      color: var(--accent);
+      font-size: .64em;
+      letter-spacing: .055em;
+      text-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .hero-tagline {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
     }
 
     .lead {
@@ -91,6 +132,72 @@
       border-radius: 99px;
       background: var(--accent);
       box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .origin-story {
+      display: grid;
+      grid-template-columns: minmax(230px, .8fr) minmax(0, 1.2fr);
+      gap: clamp(24px, 5vw, 56px);
+      align-items: center;
+      margin: 0 0 76px;
+      padding: clamp(16px, 3vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(240,68,34,.1), transparent 42%), var(--panel);
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+
+    .origin-photo {
+      position: relative;
+      min-height: 370px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #060709;
+    }
+
+    .origin-photo::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(180deg, transparent 58%, rgba(0,0,0,.48));
+      pointer-events: none;
+    }
+
+    .origin-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .origin-copy { padding: 10px 6px; }
+
+    .origin-kicker {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+
+    .origin-copy h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      letter-spacing: -.045em;
+    }
+
+    .origin-lead {
+      margin: 18px 0;
+      color: #f0f1ef;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 700;
+    }
+
+    .origin-copy p:not(.origin-kicker):not(.origin-lead) {
+      margin: 10px 0 0;
+      color: #b9bdc4;
     }
 
     main { padding-bottom: 72px; }
@@ -139,7 +246,8 @@
     .photo-frame {
       position: relative;
       display: grid;
-      min-height: 230px;
+      min-height: 0;
+      aspect-ratio: 4 / 3;
       place-items: center;
       overflow: hidden;
       border-bottom: 1px solid var(--line);
@@ -155,6 +263,23 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    /* 車体全体を見せたい写真用：背景を残してトリミングを防ぐ */
+    .photo-frame img.full-bike {
+      object-fit: contain;
+      padding: 0;
+    }
+
+    /* 横長写真は画面いっぱいに見せつつ、車体側を中心に表示 */
+    .photo-frame img.wide-bike {
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .photo-frame img.daeg-bike {
+      transform: scale(1.18);
+      transform-origin: center 56%;
     }
 
     .photo-placeholder {
@@ -299,7 +424,10 @@
       .container { width: min(calc(100% - 24px), var(--max-width)); }
       .hero { min-height: 58vh; padding-top: 52px; }
       .garage-grid { grid-template-columns: 1fr; gap: 16px; }
-      .photo-frame { min-height: 205px; }
+      .photo-frame { min-height: 0; }
+      .origin-story { grid-template-columns: 1fr; gap: 22px; margin-bottom: 54px; padding: 14px; }
+      .origin-photo { min-height: 330px; }
+      .origin-copy { padding: 6px 4px 10px; }
       .card-body { padding: 20px; }
       .comment { min-height: 0; }
       .cheer { margin-top: 52px; padding: 38px 16px; }
@@ -327,8 +455,9 @@
 
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">Maeda Family Garage</p>
-      <h1>前田家ガレージ</h1>
+      <p class="eyebrow">Family Motorcycle Club</p>
+      <h1 class="garage-logo" aria-label="Maeda Garage"><span class="logo-maeda">MAEDA</span><span class="logo-garage">GARAGE</span></h1>
+      <p class="hero-tagline">Family Rides · Memory Archive</p>
       <p class="lead">家族のバイクと思い出を残す場所</p>
       <hr class="hero-line">
       <a class="gallery-cta" href="gallery.html">思い出ギャラリーを見る <span aria-hidden="true">→</span></a>
@@ -336,6 +465,20 @@
   </header>
 
   <main class="container">
+    <section class="origin-story" aria-labelledby="origin-title">
+      <figure class="origin-photo">
+        <img src="images/family-beginning.jpg" alt="2010年1月30日、生まれたばかりのRYOUYAとRYUSEI、KAZUMAの写真" loading="eager" decoding="async">
+      </figure>
+      <div class="origin-copy">
+        <p class="origin-kicker">THE BEGINNING · 2010.01.30</p>
+        <h2 id="origin-title">あの日から、夢は続いている。</h2>
+        <p class="origin-lead">RYOUYAが生まれた日。RYUSEI、KAZUMA、そしてRYOUYA――3人で残した、家族の原点となる一枚。</p>
+        <p>父・TAKENOBUは、いつか子どもたちがバイクに乗り、同じ道を走る未来を想像していませんでした。</p>
+        <p>いま、ツーリングの途中で目の前を走る息子たちの背中を見るたび、あの日の小さな3人が大きくなったことを思います。それは何度見ても、夢のような景色です。</p>
+        <p>このガレージは、家族とバイクがつないだ、幸せいっぱいの物語の続きです。</p>
+      </div>
+    </section>
+
     <section aria-labelledby="garage-title">
       <div class="section-heading">
         <h2 id="garage-title">Garage Members</h2>
@@ -345,24 +488,12 @@
       <div class="garage-grid">
         <article class="bike-card">
           <div class="photo-frame">
-            <img src="images/zrx400-blurred.png" alt="長男のZRX400" loading="lazy" decoding="async">
+            <img class="full-bike" src="images/zrx400-blurred.png" alt="長男のZRX400" loading="lazy" decoding="async">
           </div>
           <div class="card-body">
             <p class="owner">OWNER / RYUSEI</p>
             <h3>KAWASAKI ZRX400</h3>
             <p class="comment">受け継ぐカワサキ魂。今日も最高の相棒。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
-          </div>
-        </article>
-
-        <article class="bike-card">
-          <div class="photo-frame">
-            <img src="images/zoomer50.jpg" alt="RYUSEIのHONDA ZOOMER50" loading="lazy" decoding="async">
-          </div>
-          <div class="card-body">
-            <p class="owner">OWNER / RYUSEI</p>
-            <h3>HONDA ZOOMER50</h3>
-            <p class="comment">気軽に走れて、景色も楽しめる頼れる相棒。</p>
             <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
           </div>
         </article>
@@ -381,12 +512,12 @@
 
         <article class="bike-card">
           <div class="photo-frame">
-            <img src="images/ape50.jpg" alt="三男のHONDA APE" loading="lazy" decoding="async">
+            <img class="full-bike" src="images/ape50.jpg" alt="三男のHONDA APE" loading="lazy" decoding="async">
           </div>
           <div class="card-body">
             <p class="owner">OWNER / RYOUYA</p>
             <h3>HONDA APE</h3>
-            <p class="comment">小さな車体に、大きなワクワク。</p>
+            <p class="comment">小さな車体に、大きなワクワク。家族みんなで修理して完成させた、思い出いっぱいの一台。</p>
             <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
           </div>
         </article>
@@ -405,12 +536,24 @@
 
         <article class="bike-card">
           <div class="photo-frame">
-            <img src="images/zrx1200daeg.jpg" alt="たけさんのZRX1200 DAEG" loading="lazy" decoding="async">
+            <img class="full-bike daeg-bike" src="images/zrx1200daeg.jpg" alt="たけさんのZRX1200 DAEG" loading="lazy" decoding="async">
           </div>
           <div class="card-body">
             <p class="owner">OWNER / TAKENOBU</p>
             <h3>KAWASAKI ZRX1200 DAEG</h3>
-            <p class="comment">家族ガレージの頼れるリーダー。</p>
+            <p class="comment">家族の走りを見守る、頼もしい守護神。</p>
+            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame">
+            <img class="wide-bike" src="images/zoomer50.jpg" alt="RYUSEIのHONDA ZOOMER50" loading="lazy" decoding="async">
+          </div>
+          <div class="card-body">
+            <p class="owner">OWNER / RYUSEI</p>
+            <h3>HONDA ZOOMER50</h3>
+            <p class="comment">通学を支える、RYUSEIにとって初めての大切な相棒。</p>
             <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
           </div>
         </article>
