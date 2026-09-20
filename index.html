@@ -54,10 +54,98 @@
 
     .hero {
       display: grid;
-      min-height: 68vh;
+      position: relative;
+      min-height: min(760px, 86svh);
       place-items: center;
       padding: 72px 0 56px;
+      overflow: hidden;
       text-align: center;
+      isolation: isolate;
+    }
+
+    .hero-slides,
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.02);
+      transition: opacity 1.6s ease-in-out, transform 6s ease-out;
+    }
+
+    .hero-slide.is-active {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+
+    .hero-slide:nth-child(1) { object-position: center 46%; }
+    .hero-slide:nth-child(2) { object-position: center 42%; }
+    .hero-slide:nth-child(3) { object-position: center 48%; }
+    .hero-slide:nth-child(4) { object-position: center 54%; }
+    .hero-slide:nth-child(5) { object-position: center 55%; }
+    .hero-slide:nth-child(6) { object-position: center 52%; }
+    .hero-slide:nth-child(7) { object-position: center 63%; }
+    .hero-slide:nth-child(8) { object-position: center 50%; }
+    .hero-slide:nth-child(9) { object-position: center 45%; }
+
+    .hero-shade {
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(4,5,7,.52), rgba(4,5,7,.12) 50%, rgba(4,5,7,.42)),
+        linear-gradient(0deg, rgba(4,5,7,.6), transparent 52%, rgba(4,5,7,.18));
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-dots {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.45);
+      cursor: pointer;
+      transition: width .3s ease, background .3s ease;
+    }
+
+    .hero-dot.is-active {
+      width: 28px;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .scroll-to-beginning {
+      position: absolute;
+      bottom: 21px;
+      left: 24px;
+      z-index: 2;
+      color: rgba(255,255,255,.72);
+      font-size: .64rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-decoration: none;
+      text-transform: uppercase;
     }
 
     .eyebrow {
@@ -422,7 +510,9 @@
 
     @media (max-width: 680px) {
       .container { width: min(calc(100% - 24px), var(--max-width)); }
-      .hero { min-height: 58vh; padding-top: 52px; }
+      .hero { min-height: min(700px, 82svh); padding-top: 52px; }
+      .hero-dots { right: 16px; bottom: 16px; }
+      .scroll-to-beginning { bottom: 16px; left: 16px; font-size: .56rem; }
       .garage-grid { grid-template-columns: 1fr; gap: 16px; }
       .photo-frame { min-height: 0; }
       .origin-story { grid-template-columns: 1fr; gap: 22px; margin-bottom: 54px; padding: 14px; }
@@ -454,7 +544,19 @@
   </nav>
 
   <header class="hero">
-    <div class="container">
+    <div class="hero-slides" aria-hidden="true">
+      <img class="hero-slide is-active" src="images/hero-kazuma-ryouya.jpg" alt="">
+      <img class="hero-slide" src="images/hero-ryouya.jpg" alt="">
+      <img class="hero-slide" src="images/hero-ns250r-ryusei.jpg" alt="">
+      <img class="hero-slide" src="images/hero-kazuma.jpg" alt="">
+      <img class="hero-slide" src="images/hero-daeg.jpg" alt="">
+      <img class="hero-slide" src="images/hero-zrx400-blurred.png" alt="">
+      <img class="hero-slide" src="images/hero-ryusei.jpg" alt="">
+      <img class="hero-slide" src="images/hero-ryusei-ryouya.jpg" alt="">
+      <img class="hero-slide" src="images/hero-three-brothers.jpg" alt="">
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="container hero-content">
       <p class="eyebrow">Family Motorcycle Club</p>
       <h1 class="garage-logo" aria-label="Maeda Garage"><span class="logo-maeda">MAEDA</span><span class="logo-garage">GARAGE</span></h1>
       <p class="hero-tagline">Family Rides · Memory Archive</p>
@@ -462,17 +564,30 @@
       <hr class="hero-line">
       <a class="gallery-cta" href="gallery.html">思い出ギャラリーを見る <span aria-hidden="true">→</span></a>
     </div>
+    <a class="scroll-to-beginning" href="#beginning">Scroll to 2010 ↓</a>
+    <div class="hero-dots" aria-label="トップ写真を選択">
+      <button class="hero-dot is-active" type="button" aria-label="写真 1" aria-current="true"></button>
+      <button class="hero-dot" type="button" aria-label="写真 2"></button>
+      <button class="hero-dot" type="button" aria-label="写真 3"></button>
+      <button class="hero-dot" type="button" aria-label="写真 4"></button>
+      <button class="hero-dot" type="button" aria-label="写真 5"></button>
+      <button class="hero-dot" type="button" aria-label="写真 6"></button>
+      <button class="hero-dot" type="button" aria-label="写真 7"></button>
+      <button class="hero-dot" type="button" aria-label="写真 8"></button>
+      <button class="hero-dot" type="button" aria-label="写真 9"></button>
+    </div>
   </header>
 
   <main class="container">
-    <section class="origin-story" aria-labelledby="origin-title">
+    <section id="beginning" class="origin-story" aria-labelledby="origin-title">
       <figure class="origin-photo">
         <img src="images/family-beginning.jpg" alt="2010年1月30日、生まれたばかりのRYOUYAとRYUSEI、KAZUMAの写真" loading="eager" decoding="async">
       </figure>
       <div class="origin-copy">
-        <p class="origin-kicker">THE BEGINNING · 2010.01.30</p>
-        <h2 id="origin-title">あの日から、夢は続いている。</h2>
-        <p class="origin-lead">RYOUYAが生まれた日。RYUSEI、KAZUMA、そしてRYOUYA――3人で残した、家族の原点となる一枚。</p>
+        <p class="origin-kicker">THE BEGINNING — 2010</p>
+        <h2 id="origin-title">この頃は、まだ知らなかった。</h2>
+        <p class="origin-lead">いつか、この子たちと同じ道を走る日が来ることを。</p>
+        <p>2010年1月30日。RYOUYAが生まれ、RYUSEIとKAZUMAと3人で残した、家族の原点となる一枚。</p>
         <p>父・TAKENOBUは、いつか子どもたちがバイクに乗り、同じ道を走る未来を想像していませんでした。</p>
         <p>いま、ツーリングの途中で目の前を走る息子たちの背中を見るたび、あの日の小さな3人が大きくなったことを思います。それは何度見ても、夢のような景色です。</p>
         <p>このガレージは、家族とバイクがつないだ、幸せいっぱいの物語の続きです。</p>
@@ -574,6 +689,39 @@
   </footer>
 
   <script>
+    const heroSlides = [...document.querySelectorAll(".hero-slide")];
+    const heroDots = [...document.querySelectorAll(".hero-dot")];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let activeSlide = 0;
+    let slideshowTimer;
+
+    const showSlide = (index) => {
+      activeSlide = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === activeSlide);
+      });
+      heroDots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeSlide;
+        dot.classList.toggle("is-active", isActive);
+        if (isActive) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
+
+    const startSlideshow = () => {
+      if (reduceMotion || heroSlides.length < 2) return;
+      clearInterval(slideshowTimer);
+      slideshowTimer = setInterval(() => showSlide(activeSlide + 1), 4500);
+    };
+
+    heroDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        startSlideshow();
+      });
+    });
+    startSlideshow();
+
     const messages = [
       "今日も最高の一日にしよう！🔥",
       "安全第一、楽しさ全開！",
