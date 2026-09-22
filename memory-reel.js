@@ -17,9 +17,9 @@
   const date = document.getElementById('reelDate');
   const title = document.getElementById('reelTitle');
   const comment = document.getElementById('reelComment');
-  const count = document.getElementById('reelCount');
-  const progress = document.getElementById('reelProgress');
-  const toggle = document.getElementById('reelToggle');
+  const counts = [...document.querySelectorAll('.reel-count')];
+  const progressBars = [...document.querySelectorAll('.reel-progress-bar')];
+  const toggles = [...document.querySelectorAll('.reel-toggle')];
   const duration = 7000;
   let current = 0;
   let paused = false;
@@ -69,18 +69,18 @@
     date.textContent = formatDate(entry);
     title.textContent = entry.title;
     comment.textContent = entry.comment;
-    count.textContent = `${current + 1} / ${entries.length}`;
-    progress.style.width = `${((current + 1) / entries.length) * 100}%`;
+    counts.forEach(count => { count.textContent = `${current + 1} / ${entries.length}`; });
+    progressBars.forEach(progress => { progress.style.width = `${((current + 1) / entries.length) * 100}%`; });
     resetTimer();
   };
 
-  document.getElementById('reelPrev').addEventListener('click', () => render(current - 1));
-  document.getElementById('reelNext').addEventListener('click', () => render(current + 1));
-  toggle.addEventListener('click', () => {
+  document.querySelectorAll('.reel-prev').forEach(button => button.addEventListener('click', () => render(current - 1)));
+  document.querySelectorAll('.reel-next').forEach(button => button.addEventListener('click', () => render(current + 1)));
+  toggles.forEach(toggle => toggle.addEventListener('click', () => {
     paused = !paused;
-    toggle.textContent = paused ? '再生' : '一時停止';
+    toggles.forEach(button => { button.textContent = paused ? '再生' : '一時停止'; });
     resetTimer();
-  });
+  }));
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) window.clearInterval(timer);
     else resetTimer();

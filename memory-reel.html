@@ -29,6 +29,13 @@
 
     <section class="reel-stage" aria-label="思い出のスライドショー">
       <div class="reel-media" id="reelMedia"></div>
+      <div class="reel-controls reel-controls-overlay" aria-label="スライドショー操作">
+        <button class="reel-button reel-prev" type="button" aria-label="前の思い出">←</button>
+        <div class="reel-progress" aria-hidden="true"><span class="reel-progress-bar"></span></div>
+        <span class="reel-count"></span>
+        <button class="reel-button reel-next" type="button" aria-label="次の思い出">→</button>
+        <button class="reel-button reel-toggle" type="button">一時停止</button>
+      </div>
     </section>
 
     <section class="reel-caption" aria-live="polite">
@@ -38,12 +45,12 @@
       <p id="reelComment"></p>
     </section>
 
-    <div class="reel-controls" aria-label="スライドショー操作">
-      <button class="reel-button" id="reelPrev" type="button" aria-label="前の思い出">←</button>
-      <div class="reel-progress" aria-hidden="true"><span id="reelProgress"></span></div>
-      <span class="reel-count" id="reelCount"></span>
-      <button class="reel-button" id="reelNext" type="button" aria-label="次の思い出">→</button>
-      <button class="reel-button reel-toggle" id="reelToggle" type="button">一時停止</button>
+    <div class="reel-controls reel-controls-mobile" aria-label="スライドショー操作">
+      <button class="reel-button reel-prev" type="button" aria-label="前の思い出">←</button>
+      <div class="reel-progress" aria-hidden="true"><span class="reel-progress-bar"></span></div>
+      <span class="reel-count"></span>
+      <button class="reel-button reel-next" type="button" aria-label="次の思い出">→</button>
+      <button class="reel-button reel-toggle" type="button">一時停止</button>
     </div>
   </main>
 

@@ -402,6 +402,8 @@
   margin-top: 12px;
 }
 
+.reel-controls-overlay { display: none; }
+
 .reel-button {
   min-width: 44px;
   min-height: 42px;
@@ -418,6 +420,29 @@
 .reel-progress { height: 3px; overflow: hidden; border-radius: 99px; background: var(--line); }
 .reel-progress > span { display: block; width: 0; height: 100%; background: var(--accent); transition: width .35s ease; }
 .reel-count { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+
+@media (min-width: 681px) {
+  .reel-controls-mobile { display: none; }
+
+  .reel-stage .reel-controls-overlay {
+    position: absolute;
+    inset: 0;
+    display: block;
+    margin: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .reel-controls-overlay .reel-button,
+  .reel-controls-overlay .reel-progress,
+  .reel-controls-overlay .reel-count { position: absolute; pointer-events: auto; }
+
+  .reel-controls-overlay .reel-prev { top: 50%; left: 18px; transform: translateY(-50%); }
+  .reel-controls-overlay .reel-next { top: 50%; right: 18px; transform: translateY(-50%); }
+  .reel-controls-overlay .reel-toggle { bottom: 16px; left: 18px; background: rgba(17,19,23,.82); }
+  .reel-controls-overlay .reel-count { right: 18px; bottom: 27px; color: #fff; text-shadow: 0 1px 8px #000; }
+  .reel-controls-overlay .reel-progress { right: 100px; bottom: 24px; left: 115px; background: rgba(255,255,255,.32); }
+}
 
 @media (max-width: 560px) {
   .reel-container { width: calc(100% - 24px); padding-top: 16px; }
