@@ -353,26 +353,12 @@
 
 .reel-frame iframe { border: 0; }
 
-.reel-shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: transparent;
-}
-
 .reel-caption {
-  position: absolute;
-  right: clamp(20px, 5vw, 58px);
-  bottom: clamp(22px, 5vw, 52px);
-  left: clamp(20px, 5vw, 58px);
-  max-width: 780px;
-  padding: 14px 18px;
-  border: 1px solid rgba(255,255,255,.16);
-  border-radius: 14px;
-  background: rgba(8, 9, 11, .62);
-  backdrop-filter: blur(5px);
-  z-index: 1;
-  text-shadow: 0 2px 16px rgba(0,0,0,.85);
+  margin-top: 18px;
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
 }
 
 .reel-caption time {
@@ -385,12 +371,12 @@
 
 .reel-caption h2 {
   margin: 4px 0 8px;
-  color: #fff;
+  color: var(--text);
   font-size: clamp(1.4rem, 3vw, 2.5rem);
   line-height: 1.24;
 }
 
-.reel-caption p { margin: 0; color: #e1e3e7; }
+.reel-caption p { margin: 0; color: var(--muted); }
 
 .reel-type {
   display: inline-flex;
