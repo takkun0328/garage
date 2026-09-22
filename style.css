@@ -296,23 +296,23 @@
 .reel-container {
   width: min(calc(100% - 32px), 1180px);
   margin: 0 auto;
-  padding: 44px 0 72px;
+  padding: clamp(18px, 3vw, 32px) 0 28px;
 }
 
 .reel-intro {
   max-width: 620px;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .reel-intro h1 {
-  margin: 4px 0 8px;
-  font-size: clamp(2rem, 5vw, 4.4rem);
+  margin: 2px 0 4px;
+  font-size: clamp(1.4rem, 3vw, 2.35rem);
   letter-spacing: .035em;
 }
 
 .reel-stage {
   position: relative;
-  min-height: min(68vh, 720px);
+  min-height: clamp(265px, 49svh, 540px);
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 22px;
@@ -354,8 +354,8 @@
 .reel-frame iframe { border: 0; }
 
 .reel-caption {
-  margin-top: 18px;
-  padding: clamp(20px, 4vw, 34px);
+  margin-top: 12px;
+  padding: clamp(16px, 2.5vw, 24px);
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--panel);
@@ -370,13 +370,13 @@
 }
 
 .reel-caption h2 {
-  margin: 4px 0 8px;
+  margin: 3px 0 5px;
   color: var(--text);
   font-size: clamp(1.4rem, 3vw, 2.5rem);
   line-height: 1.24;
 }
 
-.reel-caption p { margin: 0; color: var(--muted); }
+.reel-caption p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.55; }
 
 .reel-type {
   display: inline-flex;
@@ -395,7 +395,7 @@
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .reel-button {
@@ -416,8 +416,9 @@
 .reel-count { color: var(--muted); font-size: .85rem; white-space: nowrap; }
 
 @media (max-width: 560px) {
-  .reel-container { width: calc(100% - 24px); padding-top: 34px; }
-  .reel-stage { min-height: 68vh; border-radius: 16px; }
+  .reel-container { width: calc(100% - 24px); padding-top: 16px; }
+  .reel-intro { margin-bottom: 10px; }
+  .reel-stage { min-height: clamp(235px, 40svh, 390px); border-radius: 16px; }
   .reel-frame img { object-fit: cover; }
   .reel-controls { grid-template-columns: auto 1fr auto; }
   .reel-controls .reel-toggle { grid-column: 1 / -1; }
