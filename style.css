@@ -85,6 +85,7 @@
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -356,7 +357,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(0,0,0,.04) 35%, rgba(0,0,0,.86) 100%);
+  background: transparent;
 }
 
 .reel-caption {
@@ -365,6 +366,11 @@
   bottom: clamp(22px, 5vw, 52px);
   left: clamp(20px, 5vw, 58px);
   max-width: 780px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  background: rgba(8, 9, 11, .62);
+  backdrop-filter: blur(5px);
   z-index: 1;
   text-shadow: 0 2px 16px rgba(0,0,0,.85);
 }
