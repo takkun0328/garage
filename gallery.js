@@ -66,26 +66,46 @@
 
   const grid = document.getElementById('photos');
   if (!grid) return;
-  const requestedYear = new URLSearchParams(window.location.search).get('year') || '';
+  const requestedYear = document.body.dataset.galleryYear || new URLSearchParams(window.location.search).get('year') || '';
   const selectedYear = /^\d{4}$/.test(requestedYear) ? requestedYear : '';
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.textContent.trim() === '思い出ギャラリー') link.href = 'gallery-latest.html';
+  });
   const title = document.getElementById('galleryTimelineTitle');
   const lead = document.getElementById('galleryTimelineLead');
   if (title) title.textContent = selectedYear ? `${selectedYear}年の思い出` : 'すべての思い出';
   if (lead) lead.textContent = selectedYear
     ? `${selectedYear}年に家族とバイクが重ねた、忘れたくない瞬間。新しい日付からご覧ください。`
     : '一緒に直した日も、走った日も。新しい日付から振り返る、家族とバイクの物語。';
-  document.querySelectorAll('.year-link').forEach(link => {
-    const active = link.dataset.year === selectedYear;
-    link.classList.toggle('active', active);
-    if (active) link.setAttribute('aria-current', 'page');
-    else link.removeAttribute('aria-current');
-  });
   const el = (tag, cls, text) => {
     const node = document.createElement(tag);
     if (cls) node.className = cls;
     if (text) node.textContent = text;
     return node;
   };
+  const availableYears = [...new Set([...window.MAEDA_GALLERY_DATA.photos, ...window.MAEDA_GALLERY_DATA.videos]
+    .map(([, date]) => (date || '').slice(0, 4))
+    .filter(year => /^\d{4}$/.test(year)))]
+    .sort((a, b) => b.localeCompare(a));
+  document.querySelectorAll('.gallery-years').forEach(nav => {
+    const links = availableYears.map(year => {
+      const link = el('a', 'year-link', `${year}年`);
+      link.dataset.year = year;
+      link.href = `gallery-year.html?year=${year}`;
+      if (year === selectedYear) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+      return link;
+    });
+    const all = el('a', 'year-link', 'すべて');
+    all.href = 'gallery.html';
+    if (!selectedYear) {
+      all.classList.add('active');
+      all.setAttribute('aria-current', 'page');
+    }
+    nav.replaceChildren(...links, all);
+  });
   const entries = [];
   const make = (row, video) => {
     const [id,date,title,comment,short,dateText] = row;
@@ -132,4 +152,36 @@
     fragment.append(entry.card);
   }
   grid.replaceChildren(fragment);
+
+  const footer = document.querySelector('.gallery-footer');
+  if (footer) {
+    const oldHomeLink = footer.querySelector('a');
+    const actions = el('div', 'gallery-footer-actions');
+    const home = el('a', 'garage-return');
+    home.href = 'index.html';
+    home.setAttribute('aria-label', '前田家ガレージへ戻る');
+    home.append(
+      el('span', 'return-arrow', '←'),
+      el('span', 'return-maeda', 'MAEDA'),
+      el('span', 'return-garage', 'GARAGE')
+    );
+    const top = el('a', 'back-to-top', 'ページ上部へ ↑');
+    top.href = '#';
+    top.addEventListener('click', event => {
+      event.preventDefault();
+      const start = window.scrollY;
+      const duration = 750;
+      const startedAt = performance.now();
+      const animate = now => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, start * (1 - eased));
+        if (progress < 1) window.requestAnimationFrame(animate);
+      };
+      window.requestAnimationFrame(animate);
+    });
+    actions.append(home, top);
+    oldHomeLink?.closest('p')?.remove();
+    footer.prepend(actions);
+  }
 })();

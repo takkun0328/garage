@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <title>思い出ギャラリー | 前田家ガレージ</title>
+  <script src="gallery.js"></script>
+  <script>
+    (() => {
+      const data = window.MAEDA_GALLERY_DATA;
+      const years = [...data.photos, ...data.videos]
+        .map(([, date]) => (date || '').slice(0, 4))
+        .filter(year => /^\d{4}$/.test(year))
+        .sort((a, b) => b.localeCompare(a));
+      const latest = years[0];
+      window.location.replace(latest ? `gallery-year.html?year=${latest}` : 'gallery.html');
+    })();
+  </script>
+</head>
+<body></body>
+</html>
