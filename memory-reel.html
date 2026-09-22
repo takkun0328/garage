@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="前田家ガレージの写真と動画を時系列で楽しむスライドショー。">
+  <title>MEMORY REEL | 前田家ガレージ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="gallery-page reel-page">
+  <nav class="site-nav" aria-label="メインナビゲーション">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">MAEDA GARAGE</a>
+      <div class="nav-links">
+        <a href="index.html">ガレージ</a>
+        <a href="gallery.html">思い出ギャラリー</a>
+        <a class="active" href="memory-reel.html" aria-current="page">MEMORY REEL</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="reel-container">
+    <header class="reel-intro">
+      <p class="gallery-kicker">MAEDA FAMILY · MEMORY REEL</p>
+      <h1>思い出を、もう一度。</h1>
+      <p class="gallery-lead">写真と動画を、古い日付から大きく映し出します。</p>
+    </header>
+
+    <section class="reel-stage" aria-label="思い出のスライドショー">
+      <div class="reel-media" id="reelMedia"></div>
+      <div class="reel-shade"></div>
+      <div class="reel-caption">
+        <span class="reel-type" id="reelType"></span>
+        <time id="reelDate"></time>
+        <h2 id="reelTitle"></h2>
+        <p id="reelComment"></p>
+      </div>
+    </section>
+
+    <div class="reel-controls" aria-label="スライドショー操作">
+      <button class="reel-button" id="reelPrev" type="button" aria-label="前の思い出">←</button>
+      <div class="reel-progress" aria-hidden="true"><span id="reelProgress"></span></div>
+      <span class="reel-count" id="reelCount"></span>
+      <button class="reel-button" id="reelNext" type="button" aria-label="次の思い出">→</button>
+      <button class="reel-button reel-toggle" id="reelToggle" type="button">一時停止</button>
+    </div>
+  </main>
+
+  <script src="gallery.js"></script>
+  <script src="memory-reel.js"></script>
+</body>
+</html>
