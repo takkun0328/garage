@@ -66,13 +66,27 @@
 
   const grid = document.getElementById('photos');
   if (!grid) return;
+  const requestedYear = new URLSearchParams(window.location.search).get('year') || '';
+  const selectedYear = /^\d{4}$/.test(requestedYear) ? requestedYear : '';
+  const title = document.getElementById('galleryTimelineTitle');
+  const lead = document.getElementById('galleryTimelineLead');
+  if (title) title.textContent = selectedYear ? `${selectedYear}年の思い出` : 'すべての思い出';
+  if (lead) lead.textContent = selectedYear
+    ? `${selectedYear}年に家族とバイクが重ねた、忘れたくない瞬間。新しい日付からご覧ください。`
+    : '一緒に直した日も、走った日も。新しい日付から振り返る、家族とバイクの物語。';
+  document.querySelectorAll('.year-link').forEach(link => {
+    const active = link.dataset.year === selectedYear;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
   const el = (tag, cls, text) => {
     const node = document.createElement(tag);
     if (cls) node.className = cls;
     if (text) node.textContent = text;
     return node;
   };
-  const entries = [...grid.querySelectorAll(':scope > article')].map(card => ({card, date: card.querySelector('time')?.dateTime || ''}));
+  const entries = [];
   const make = (row, video) => {
     const [id,date,title,comment,short,dateText] = row;
     const card = el('article','memory-card');
@@ -107,11 +121,12 @@
     card.append(media,body);
     return {card,date};
   };
-  entries.push(...photos.map(r => make(r,false)), ...videos.map(r => make(r,true)));
-  entries.sort((a,b) => (a.date || '9999').localeCompare(b.date || '9999'));
+  entries.push(...window.MAEDA_GALLERY_DATA.photos.map(r => make(r,false)), ...window.MAEDA_GALLERY_DATA.videos.map(r => make(r,true)));
+  const visibleEntries = selectedYear ? entries.filter(entry => entry.date.slice(0,4) === selectedYear) : entries;
+  visibleEntries.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
   const fragment = document.createDocumentFragment();
   let year;
-  for (const entry of entries) {
+  for (const entry of visibleEntries) {
     const group = entry.date ? entry.date.slice(0,4) : '撮影日を確認中';
     if (group !== year) { fragment.append(el('h2','memory-year',group)); year = group; }
     fragment.append(entry.card);

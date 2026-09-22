@@ -140,8 +140,9 @@
 
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: minmax(0, 900px);
+  justify-content: center;
+  gap: 28px;
   padding: 12px 0 80px;
 }
 
@@ -234,6 +235,9 @@
 }
 
 .gallery-categories { display: flex; flex-wrap: wrap; gap: 10px; }
+.gallery-years { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; }
+.year-link { padding: 7px 13px; border: 1px solid var(--shared-line); border-radius: 999px; color: var(--shared-muted); font-size: .84rem; font-weight: 800; text-decoration: none; }
+.year-link:hover, .year-link.active { border-color: var(--shared-accent); color: var(--shared-text); background: rgba(240,68,34,.12); }
 .family-story { margin: 24px 0; padding: 20px; border: 1px solid var(--shared-line); border-radius: 18px; background: var(--shared-panel); }
 .family-story summary { cursor: pointer; font-weight: 700; }
 .family-story p { color: #b9bdc4; }
@@ -261,7 +265,7 @@
 }
 
 @media (max-width: 820px) {
-  .memory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .memory-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
