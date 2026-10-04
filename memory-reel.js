@@ -3,15 +3,18 @@
   const media = document.getElementById('reelMedia');
   if (!data || !media) return;
 
-  const entries = [
+  const allEntries = [
     ...data.photos.map(([id, date, title, comment, short, dateText]) => ({ id, date, title, comment, short, dateText, type: 'photo' })),
     ...data.videos.map(([id, date, title, comment, short, dateText]) => ({ id, date, title, comment, short, dateText, type: 'video' }))
-  ].sort((a, b) => {
+  ];
+  if (!allEntries.length) return;
+  const compareDates = (a, b, newest = false) => {
     if (!a.date && !b.date) return 0;
     if (!a.date) return 1;
     if (!b.date) return -1;
-    return a.date.localeCompare(b.date);
-  });
+    return newest ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date);
+  };
+  let entries = [...allEntries].sort(compareDates);
 
   const type = document.getElementById('reelType');
   const date = document.getElementById('reelDate');
@@ -76,6 +79,27 @@
 
   document.querySelectorAll('.reel-prev').forEach(button => button.addEventListener('click', () => render(current - 1)));
   document.querySelectorAll('.reel-next').forEach(button => button.addEventListener('click', () => render(current + 1)));
+  const orderButtons = [...document.querySelectorAll('.reel-order')];
+  const orderDescription = document.getElementById('reelOrderDescription');
+  orderButtons.forEach(button => button.addEventListener('click', () => {
+    const order = button.dataset.order;
+    entries = [...allEntries];
+    if (order === 'random') {
+      for (let i = entries.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [entries[i], entries[j]] = [entries[j], entries[i]];
+      }
+    } else {
+      entries.sort((a, b) => compareDates(a, b, order === 'newest'));
+    }
+    orderButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    if (orderDescription) orderDescription.textContent = order === 'random'
+      ? '写真と動画を、ランダムな順番で大きく映し出します。'
+      : order === 'newest'
+        ? '写真と動画を、新しい日付から大きく映し出します。'
+        : '写真と動画を、古い日付から大きく映し出します。';
+    render(0);
+  }));
   toggles.forEach(toggle => toggle.addEventListener('click', () => {
     paused = !paused;
     toggles.forEach(button => { button.textContent = paused ? '再生' : '一時停止'; });

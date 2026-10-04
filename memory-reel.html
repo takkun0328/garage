@@ -24,7 +24,12 @@
     <header class="reel-intro">
       <p class="gallery-kicker">MAEDA FAMILY · MEMORY REEL</p>
       <h1>思い出を、もう一度。</h1>
-      <p class="gallery-lead">写真と動画を、古い日付から大きく映し出します。</p>
+      <p class="gallery-lead" id="reelOrderDescription">写真と動画を、古い日付から大きく映し出します。</p>
+      <div class="reel-order-controls" role="group" aria-label="思い出の表示順">
+        <button class="reel-button reel-order" type="button" data-order="oldest" aria-pressed="true">古い順に見る</button>
+        <button class="reel-button reel-order" type="button" data-order="newest" aria-pressed="false">新しい順に見る</button>
+        <button class="reel-button reel-order" type="button" data-order="random" aria-pressed="false">ランダム</button>
+      </div>
     </header>
 
     <section class="reel-stage" aria-label="思い出のスライドショー">
