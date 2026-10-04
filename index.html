@@ -571,6 +571,40 @@
 
     footer p { margin: 0; }
 
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 24px auto 22px;
+    }
+
+    .footer-nav a,
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid #343941;
+      border-radius: 999px;
+      color: #f1f2f4;
+      background: #15181d;
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .footer-nav a:hover,
+    .back-to-top:hover {
+      border-color: var(--accent);
+      background: #20242a;
+      transform: translateY(-2px);
+    }
+
+    .back-to-top { border-color: var(--accent); }
+
     .footer-mark {
       display: block;
       margin-bottom: 10px;
@@ -609,7 +643,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <nav class="site-nav" aria-label="メインナビゲーション">
     <div class="nav-inner">
       <a class="brand" href="index.html">MAEDA GARAGE</a>
@@ -812,6 +846,13 @@
   <footer>
     <span class="footer-mark">MAEDA FAMILY GARAGE</span>
     <p>家族との物語は、これからも続く。</p>
+    <nav class="footer-nav" aria-label="ページ内リンク">
+      <a href="#beginning">物語のはじまり</a>
+      <a href="#garage-title">Garage Members</a>
+      <a href="gallery-latest.html">思い出ギャラリー</a>
+      <a href="memory-reel.html">MEMORY REEL</a>
+    </nav>
+    <a class="back-to-top" href="#top">ページ上部へ ↑</a>
   </footer>
 
   <script>
