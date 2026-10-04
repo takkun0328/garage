@@ -856,6 +856,17 @@
   </footer>
 
   <script>
+    // ページ内リンクは、設定環境に左右されずスムーズに移動させる。
+    document.querySelectorAll('.footer-nav a[href^="#"], .back-to-top[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", link.getAttribute("href"));
+      });
+    });
+
     const heroSlides = [...document.querySelectorAll(".hero-slide")];
     const heroDots = [...document.querySelectorAll(".hero-dot")];
     let activeSlide = 0;
