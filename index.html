@@ -100,17 +100,18 @@
       transition: none;
     }
 
-    .hero-slide:nth-child(1) { object-position: center 46%; }
-    .hero-slide:nth-child(2) { object-position: center 42%; }
-    .hero-slide:nth-child(3) { object-position: center 48%; }
-    .hero-slide:nth-child(4) { object-position: center 54%; }
-    .hero-slide:nth-child(5) { object-position: center 55%; }
-    .hero-slide:nth-child(6) { object-position: center 52%; }
-    .hero-slide:nth-child(7) { object-position: center 72%; }
-    .hero-slide:nth-child(8) { object-position: center 50%; }
-    .hero-slide:nth-child(9) { object-position: center 45%; }
-    .hero-slide:nth-child(10) { object-position: center 60%; }
-    .hero-slide:nth-child(11) { object-position: center 58%; }
+    .hero-slide:nth-child(1) { object-position: center 50%; }
+    .hero-slide:nth-child(2) { object-position: center 46%; }
+    .hero-slide:nth-child(3) { object-position: center 42%; }
+    .hero-slide:nth-child(4) { object-position: center 48%; }
+    .hero-slide:nth-child(5) { object-position: center 54%; }
+    .hero-slide:nth-child(6) { object-position: center 55%; }
+    .hero-slide:nth-child(7) { object-position: center 52%; }
+    .hero-slide:nth-child(8) { object-position: center 72%; }
+    .hero-slide:nth-child(9) { object-position: center 50%; }
+    .hero-slide:nth-child(10) { object-position: center 45%; }
+    .hero-slide:nth-child(11) { object-position: center 60%; }
+    .hero-slide:nth-child(12) { object-position: center 58%; }
 
     /* PCは写真を切り取らず、元の構図をそのまま見せる */
     @media (min-width: 681px) {
@@ -119,9 +120,9 @@
         object-fit: contain;
       }
 
-      /* 7枚目の縦写真は、走るバイクを大きく見せる */
-      .hero-slide:nth-child(7),
-      .hero-slide:nth-child(7).is-active {
+      /* 8枚目の縦写真は、走るバイクを大きく見せる */
+      .hero-slide:nth-child(8),
+      .hero-slide:nth-child(8).is-active {
         object-fit: cover;
         object-position: center 66%;
       }
@@ -622,7 +623,8 @@
 
   <header class="hero">
     <div class="hero-slides" aria-hidden="true">
-      <img class="hero-slide is-active" src="images/hero-kazuma-ryouya.jpg" alt="">
+      <img class="hero-slide is-active" src="images/gallery/img_4060.jpg" alt="">
+      <img class="hero-slide" src="images/hero-kazuma-ryouya.jpg" alt="">
       <img class="hero-slide" src="images/hero-ryouya.jpg" alt="">
       <img class="hero-slide" src="images/hero-ns250r-ryusei.jpg" alt="">
       <img class="hero-slide" src="images/hero-kazuma.jpg" alt="">
@@ -659,6 +661,7 @@
       <button class="hero-dot" type="button" aria-label="写真 9"></button>
       <button class="hero-dot" type="button" aria-label="写真 10"></button>
       <button class="hero-dot" type="button" aria-label="写真 11"></button>
+      <button class="hero-dot" type="button" aria-label="写真 12"></button>
     </div>
   </header>
 
