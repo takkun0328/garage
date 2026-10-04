@@ -441,26 +441,51 @@
       color: #d2d4d8;
     }
 
-    .memo {
+    .bike-specs {
       padding: 14px 15px;
       border-left: 3px solid var(--accent);
       border-radius: 0 10px 10px 0;
       background: rgba(0,0,0,.22);
     }
 
-    .memo-label {
+    .specs-label {
       display: block;
-      margin-bottom: 3px;
+      margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.15em;
     }
 
-    .memo p {
+    .bike-specs dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5px 12px;
+      margin: 0;
+      font-size: 0.86rem;
+    }
+
+    .bike-specs dt { color: var(--muted); }
+
+    .bike-specs dd {
       margin: 0;
       color: #bbbfc5;
-      font-size: 0.88rem;
+      text-align: right;
+    }
+
+    .past-bikes { margin-top: 68px; }
+
+    .past-bikes h2 span {
+      margin-left: 8px;
+      color: var(--muted);
+      font-size: .62em;
+      letter-spacing: 0;
+    }
+
+    .specs-note {
+      margin: 14px 2px 0;
+      color: var(--muted);
+      font-size: .78rem;
     }
 
     .cheer {
@@ -635,7 +660,7 @@
     <section aria-labelledby="garage-title">
       <div class="section-heading">
         <h2 id="garage-title">Garage Members</h2>
-        <span class="count">6 BIKES</span>
+        <span class="count">6 CURRENT BIKES</span>
       </div>
 
       <div class="garage-grid">
@@ -647,7 +672,7 @@
             <p class="owner">OWNER / RYUSEI</p>
             <h3>KAWASAKI ZRX400</h3>
             <p class="comment">受け継ぐカワサキ魂。今日も最高の相棒。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1994 MODEL</span><dl><dt>発売</dt><dd>1994年</dd><dt>排気量</dt><dd>399cc</dd><dt>最高出力</dt><dd>53PS / 11,000rpm</dd><dt>乾燥重量</dt><dd>187kg</dd></dl></div>
           </div>
         </article>
 
@@ -659,7 +684,7 @@
             <p class="owner">OWNER / KAZUMA</p>
             <h3>HONDA CB400SF</h3>
             <p class="comment">VTECの音と一緒に、どこまでも。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1999 NC39</span><dl><dt>発売</dt><dd>1999年</dd><dt>排気量</dt><dd>399cc</dd><dt>最高出力</dt><dd>53PS / 11,000rpm</dd><dt>車両重量</dt><dd>188kg</dd></dl></div>
           </div>
         </article>
 
@@ -671,7 +696,7 @@
             <p class="owner">OWNER / RYOUYA</p>
             <h3>HONDA APE</h3>
             <p class="comment">小さな車体に、大きなワクワク。家族みんなで修理して完成させた、思い出いっぱいの一台。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 2001 MODEL</span><dl><dt>発売</dt><dd>2001年</dd><dt>排気量</dt><dd>49cc</dd><dt>最高出力</dt><dd>3.7PS / 7,500rpm</dd><dt>車両重量</dt><dd>80kg</dd></dl></div>
           </div>
         </article>
 
@@ -683,7 +708,7 @@
             <p class="owner">OWNER / 家族の思い出バイク</p>
             <h3>HONDA NS250R</h3>
             <p class="comment">借り物だけど、大切な物語が詰まった一台</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>カウル修理、スクリーン、旧車ならではの味わい</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1984 MODEL</span><dl><dt>発売</dt><dd>1984年</dd><dt>排気量</dt><dd>249cc</dd><dt>最高出力</dt><dd>45PS / 9,500rpm</dd><dt>車両重量</dt><dd>161kg</dd></dl></div>
           </div>
         </article>
 
@@ -695,7 +720,7 @@
             <p class="owner">OWNER / TAKENOBU</p>
             <h3>KAWASAKI ZRX1200 DAEG</h3>
             <p class="comment">家族の走りを見守る、頼もしい守護神。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 2009 MODEL</span><dl><dt>発売</dt><dd>2009年</dd><dt>排気量</dt><dd>1,164cc</dd><dt>最高出力</dt><dd>110PS / 8,000rpm</dd><dt>車両重量</dt><dd>246kg</dd></dl></div>
           </div>
         </article>
 
@@ -707,10 +732,49 @@
             <p class="owner">OWNER / RYUSEI</p>
             <h3>HONDA ZOOMER50</h3>
             <p class="comment">通学を支える、RYUSEIにとって初めての大切な相棒。</p>
-            <div class="memo"><span class="memo-label">MAINTENANCE MEMO</span><p>次回の整備内容をここに記録</p></div>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 2001 MODEL</span><dl><dt>発売</dt><dd>2001年</dd><dt>排気量</dt><dd>49cc</dd><dt>最高出力</dt><dd>4.9PS</dd><dt>乾燥重量</dt><dd>79kg</dd></dl></div>
           </div>
         </article>
       </div>
+    </section>
+
+    <section class="past-bikes" aria-labelledby="past-bikes-title">
+      <div class="section-heading">
+        <h2 id="past-bikes-title">Past Bikes <span lang="ja">過去バイク</span></h2>
+        <span class="count">TAKENOBU'S RIDING HISTORY</span>
+      </div>
+      <div class="garage-grid">
+        <article class="bike-card">
+          <div class="photo-frame"><img class="full-bike" src="images/serow225-takenobu-2004.jpg" alt="TAKENOBUの過去バイク、YAMAHA SEROW225" loading="lazy" decoding="async"></div>
+          <div class="card-body">
+            <p class="owner">PAST BIKE / TAKENOBU</p>
+            <h3>YAMAHA SEROW225</h3>
+            <p class="comment">軽やかな足どりで、山道へ連れ出してくれた思い出の一台。</p>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1985 MODEL</span><dl><dt>発売</dt><dd>1985年</dd><dt>排気量</dt><dd>223cc</dd><dt>最高出力</dt><dd>20PS / 8,000rpm</dd><dt>重量</dt><dd>102kg</dd></dl></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame"><img class="full-bike" src="images/impulse-takenobu-1999-no-helmet.png" alt="TAKENOBUの過去バイク、SUZUKI GSX400 IMPULSE" loading="lazy" decoding="async"></div>
+          <div class="card-body">
+            <p class="owner">PAST BIKE / TAKENOBU</p>
+            <h3>SUZUKI GSX400 IMPULSE</h3>
+            <p class="comment">1999年の写真に残る、当時のTAKENOBUの相棒。</p>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1994 MODEL</span><dl><dt>発売</dt><dd>1994年</dd><dt>排気量</dt><dd>399cc</dd><dt>最高出力</dt><dd>53PS / 11,000rpm</dd><dt>乾燥重量</dt><dd>172kg</dd></dl></div>
+          </div>
+        </article>
+
+        <article class="bike-card">
+          <div class="photo-frame"><img class="full-bike" src="images/zrx1100-takenobu-2001.jpg" alt="TAKENOBUの過去バイク、KAWASAKI ZRX1100" loading="lazy" decoding="async"></div>
+          <div class="card-body">
+            <p class="owner">PAST BIKE / TAKENOBU</p>
+            <h3>KAWASAKI ZRX1100</h3>
+            <p class="comment">2001年の写真に残る、重厚な存在感とともに走った思い出。</p>
+            <div class="bike-specs"><span class="specs-label">MAJOR SPECS · 1997 MODEL</span><dl><dt>発売</dt><dd>1996年12月（1997年モデル）</dd><dt>排気量</dt><dd>1,052cc</dd><dt>最高出力</dt><dd>100PS / 8,500rpm</dd><dt>乾燥重量</dt><dd>222kg</dd></dl></div>
+          </div>
+        </article>
+      </div>
+      <p class="specs-note">※スペックは代表的な発売時モデルの公称値です。年式・仕様により異なる場合があります。ZRX400・ZOOMER等の重量表記は発売時の仕様値を参考にしています。</p>
     </section>
 
     <section class="cheer" aria-labelledby="cheer-title">
